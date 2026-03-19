@@ -1,0 +1,171 @@
+{
+  "Data Structures & Algorithms": [
+    {
+      "type": "course",
+      "title": "NeetCode DSA Roadmap",
+      "platform": "YouTube",
+      "link": "https://www.youtube.com/c/NeetCode",
+      "level": "beginner",
+      "duration": "4-6 weeks",
+      "description": "A structured roadmap covering essential DSA topics including arrays, linked lists, trees, graphs, and dynamic programming. Focuses on patterns frequently asked in coding interviews and provides curated problem sets."
+    },
+    {
+      "type": "course",
+      "title": "Abdul Bari DSA Course",
+      "platform": "YouTube",
+      "link": "https://www.youtube.com/@abdul_bari",
+      "level": "beginner",
+      "duration": "6 weeks",
+      "description": "A concept-heavy course explaining core data structures and algorithms from first principles, including time complexity, recursion, sorting, and graph algorithms."
+    },
+    {
+      "type": "project",
+      "title": "Build Custom Search Engine using Trie",
+      "description": "Implement an autocomplete and search system using Trie data structure. Focus on optimizing search time complexity and handling large datasets efficiently."
+    }
+  ],
+
+  "Operating Systems": [
+    {
+      "type": "course",
+      "title": "Operating Systems - Gate Smashers",
+      "platform": "YouTube",
+      "link": "https://www.youtube.com/@GateSmashers",
+      "level": "beginner",
+      "description": "Covers core OS concepts including process management, memory management, scheduling algorithms, deadlocks, and file systems with practical explanations."
+    },
+    {
+      "type": "project",
+      "title": "Implement Process Scheduler Simulator",
+      "description": "Build a simulator implementing scheduling algorithms such as Round Robin, FCFS, and Priority Scheduling to understand CPU process handling and performance trade-offs."
+    }
+  ],
+
+  "System Design": [
+    {
+      "type": "course",
+      "title": "System Design Primer",
+      "platform": "GitHub",
+      "link": "https://github.com/donnemartin/system-design-primer",
+      "level": "intermediate",
+      "description": "A comprehensive guide to system design concepts including scalability, load balancing, caching, database design, and distributed systems architecture."
+    },
+    {
+      "type": "project",
+      "title": "Design URL Shortener",
+      "description": "Design and implement a scalable URL shortening service with database indexing, caching, and rate limiting. Focus on system scalability and fault tolerance."
+    }
+  ],
+
+  "Deep Learning": [
+    {
+      "type": "course",
+      "title": "Deep Learning Specialization",
+      "platform": "Coursera",
+      "link": "https://www.coursera.org/specializations/deep-learning",
+      "level": "intermediate",
+      "description": "Covers neural networks, CNNs, RNNs, optimization techniques, and practical deep learning workflows using real-world datasets."
+    },
+    {
+      "type": "project",
+      "title": "Image Classifier with Deployment",
+      "description": "Train a CNN model for image classification and deploy it using Flask or FastAPI with Docker. Includes model serving and API integration."
+    }
+  ],
+
+  "NLP": [
+    {
+      "type": "course",
+      "title": "NLP with HuggingFace",
+      "platform": "YouTube",
+      "link": "https://www.youtube.com/@HuggingFace",
+      "level": "intermediate",
+      "description": "Covers transformer models, tokenization, embeddings, and fine-tuning NLP models using HuggingFace libraries."
+    },
+    {
+      "type": "project",
+      "title": "Build Chatbot with Transformers",
+      "description": "Develop a chatbot using transformer models like BERT or GPT. Includes text preprocessing, response generation, and evaluation."
+    }
+  ],
+
+  "Generative AI": [
+    {
+      "type": "course",
+      "title": "Generative AI with LLMs",
+      "platform": "Coursera",
+      "link": "https://www.coursera.org/learn/generative-ai-with-llms",
+      "level": "intermediate",
+      "description": "Introduces large language models, prompt engineering, fine-tuning, and real-world applications of generative AI."
+    },
+    {
+      "type": "project",
+      "title": "RAG-based QA System",
+      "description": "Build a retrieval-augmented generation system using a vector database to retrieve context and generate accurate answers using LLMs."
+    }
+  ],
+
+  "Docker": [
+    {
+      "type": "course",
+      "title": "Docker Crash Course",
+      "platform": "YouTube",
+      "link": "https://www.youtube.com/watch?v=fqMOX6JJhGo",
+      "level": "beginner",
+      "description": "Covers containerization basics, Docker images, containers, volumes, and networking. Helps understand deployment workflows."
+    },
+    {
+      "type": "project",
+      "title": "Containerize ML App",
+      "description": "Package a machine learning model into a Docker container and deploy it for scalable inference."
+    }
+  ],
+
+  "CI/CD": [
+    {
+      "type": "course",
+      "title": "CI/CD with GitHub Actions",
+      "platform": "YouTube",
+      "link": "https://www.youtube.com/results?search_query=github+actions+tutorial",
+      "level": "intermediate",
+      "description": "Learn how to automate build, test, and deployment pipelines using GitHub Actions."
+    },
+    {
+      "type": "project",
+      "title": "Automated Deployment Pipeline",
+      "description": "Set up CI/CD pipelines for a backend or ML project including testing, building, and deployment automation."
+    }
+  ],
+
+  "Linux": [
+    {
+      "type": "course",
+      "title": "Linux for Beginners",
+      "platform": "YouTube",
+      "link": "https://www.youtube.com/watch?v=sWbUDq4S6Y8",
+      "level": "beginner",
+      "description": "Covers Linux basics including file system navigation, permissions, shell commands, and process management."
+    },
+    {
+      "type": "project",
+      "title": "Build Bash Automation Scripts",
+      "description": "Write shell scripts to automate system tasks such as file backups, monitoring, and log processing."
+    }
+  ],
+
+  "Backend": [
+    {
+      "type": "course",
+      "title": "Node.js Backend Development",
+      "platform": "YouTube",
+      "link": "https://www.youtube.com/results?search_query=nodejs+backend+tutorial",
+      "level": "intermediate",
+      "description": "Learn backend development using Node.js including REST APIs, middleware, authentication, and database integration."
+    },
+    {
+      "type": "project",
+      "title": "REST API with Authentication",
+      "description": "Build a production-ready REST API with JWT authentication, role-based access, and database integration."
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "Programming Fundamentals": {
+    "parents": []
+  },
+  "Software Engineering": {
+    "parents": []
+  },
+
+  "Data Structures & Algorithms": {
+    "parents": ["Programming Fundamentals"]
+  },
+
+  "Operating Systems": {
+    "parents": ["Systems"]
+  },
+  "Computer Networks": {
+    "parents": ["Systems"]
+  },
+  "Distributed Systems": {
+    "parents": ["Systems"]
+  },
+  "Systems": {
+    "parents": ["Software Engineering"]
+  },
+
+  "Database": {
+    "parents": ["Software Engineering"]
+  },
+  "Database Engineering": {
+    "parents": ["Database"]
+  },
+  "SQL": {
+    "parents": ["Database", "Backend", "Data Science"]
+  },
+  "NoSQL": {
+    "parents": ["Database", "Backend"]
+  },
+
+  "Backend": {
+    "parents": ["Software Engineering"]
+  },
+  "Frontend": {
+    "parents": ["Software Engineering"]
+  },
+  "Full Stack": {
+    "parents": ["Backend", "Frontend"]
+  },
+
+  "UI/UX": {
+    "parents": ["Frontend"]
+  },
+
+  "Cloud": {
+    "parents": ["Software Engineering"]
+  },
+  "DevOps": {
+    "parents": ["Cloud"]
+  },
+  "SRE": {
+    "parents": ["DevOps"]
+  },
+  "CI/CD": {
+    "parents": ["DevOps"]
+  },
+  "Docker": {
+    "parents": ["DevOps"]
+  },
+  "Kubernetes": {
+    "parents": ["DevOps", "Cloud"]
+  },
+
+  "QE": {
+    "parents": ["Software Engineering"]
+  },
+  "Testing": {
+    "parents": ["QE"]
+  },
+
+  "Cybersecurity": {
+    "parents": ["Software Engineering"]
+  },
+  "Network Security": {
+    "parents": ["Cybersecurity", "Computer Networks"]
+  },
+  "Application Security": {
+    "parents": ["Cybersecurity"]
+  },
+  "Cryptography": {
+    "parents": ["Cybersecurity"]
+  },
+
+  "AI/ML": {
+    "parents": ["Software Engineering"]
+  },
+  "Machine Learning": {
+    "parents": ["AI/ML", "Data Science"]
+  },
+  "Deep Learning": {
+    "parents": ["Machine Learning"]
+  },
+  "NLP": {
+    "parents": ["AI/ML"]
+  },
+  "Computer Vision": {
+    "parents": ["AI/ML"]
+  },
+
+  "Generative AI": {
+    "parents": ["AI/ML"]
+  },
+  "LLMs": {
+    "parents": ["Generative AI"]
+  },
+  "RAG": {
+    "parents": ["Generative AI"]
+  },
+  "Prompt Engineering": {
+    "parents": ["Generative AI"]
+  },
+
+  "Data Science": {
+    "parents": ["Software Engineering"]
+  },
+  "Statistics": {
+    "parents": ["Data Science"]
+  },
+  "Data Analysis": {
+    "parents": ["Data Science"]
+  },
+  "Data Engineering": {
+    "parents": ["Data Science", "Backend"]
+  },
+  "ETL": {
+    "parents": ["Data Engineering"]
+  },
+
+  "Backend Frameworks": {
+    "parents": ["Backend"]
+  },
+  "Frontend Frameworks": {
+    "parents": ["Frontend"]
+  },
+
+  "React": {
+    "parents": ["Frontend Frameworks"]
+  },
+  "Node.js": {
+    "parents": ["Backend Frameworks"]
+  },
+
+  "Linux": {
+    "parents": ["Systems", "DevOps"]
+  },
+  "Shell Scripting": {
+    "parents": ["Linux", "DevOps"]
+  },
+
+  "System Design": {
+    "parents": ["Software Engineering", "Distributed Systems"]
+  },
+
+  "Multithreading": {
+    "parents": ["Operating Systems"]
+  },
+
+  "GPGPU Programming": {
+    "parents": ["Systems", "AI/ML"]
+  }
+}

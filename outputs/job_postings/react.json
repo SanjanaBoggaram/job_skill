@@ -1,0 +1,45 @@
+{
+  "job_id": "react",
+  "company_name": "react technologies pvt ltd",
+  "role": "ReactJS Developer Intern",
+  "location": "Indore, Madhya Pradesh",
+  "employment_type": "Permanent, Fresher, Full-time",
+  "skills": [
+    {
+      "skill": "JavaScript",
+      "parents": [
+        "Programming Fundamentals"
+      ],
+      "score": 10
+    },
+    {
+      "skill": "CSS",
+      "parents": [
+        "Frontend"
+      ],
+      "score": 8
+    },
+    {
+      "skill": "HTML",
+      "parents": [
+        "Frontend"
+      ],
+      "score": 8
+    },
+    {
+      "skill": "React",
+      "parents": [
+        "Frontend Frameworks"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "REST",
+      "parents": [
+        "Backend"
+      ],
+      "score": 6
+    }
+  ],
+  "source_path": "data/job_postings/react"
+}

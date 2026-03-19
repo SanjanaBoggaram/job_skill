@@ -1,0 +1,66 @@
+{
+  "job_id": "weby",
+  "company_name": "Weby Software",
+  "role": "QA Tester (Fresher) | Ahmedabad (Work from Office)",
+  "location": "Ahmadabad, Gujarat [WFO Only]",
+  "employment_type": "Fresher",
+  "skills": [
+    {
+      "skill": "Testing",
+      "parents": [
+        "QE"
+      ],
+      "score": 10
+    },
+    {
+      "skill": "QA",
+      "parents": [
+        "Testing"
+      ],
+      "score": 10
+    },
+    {
+      "skill": "API",
+      "parents": [
+        "Backend"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Java",
+      "parents": [
+        "Programming Fundamentals"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "JIRA",
+      "parents": [
+        "Testing"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Postman",
+      "parents": [
+        "Testing"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Python",
+      "parents": [
+        "Programming Fundamentals"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "UI/UX",
+      "parents": [
+        "Frontend"
+      ],
+      "score": 6
+    }
+  ],
+  "source_path": "data/job_postings/weby"
+}

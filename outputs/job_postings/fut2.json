@@ -1,0 +1,59 @@
+{
+  "job_id": "fut2",
+  "company_name": "Fut India Pvt. Ltd",
+  "role": "Fresher - AWS+Python",
+  "location": "Kharadi, Pune",
+  "employment_type": "Internship, Fresher, Full-time",
+  "skills": [
+    {
+      "skill": "AWS",
+      "parents": [
+        "Cloud"
+      ],
+      "score": 10
+    },
+    {
+      "skill": "Python",
+      "parents": [
+        "Programming Fundamentals"
+      ],
+      "score": 10
+    },
+    {
+      "skill": "Cloud",
+      "parents": [
+        "Software Engineering"
+      ],
+      "score": 10
+    },
+    {
+      "skill": "API",
+      "parents": [
+        "Backend"
+      ],
+      "score": 8
+    },
+    {
+      "skill": "Backend",
+      "parents": [
+        "Software Engineering"
+      ],
+      "score": 8
+    },
+    {
+      "skill": "REST",
+      "parents": [
+        "Backend"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Systems",
+      "parents": [
+        "Software Engineering"
+      ],
+      "score": 6
+    }
+  ],
+  "source_path": "data/job_postings/fut2"
+}

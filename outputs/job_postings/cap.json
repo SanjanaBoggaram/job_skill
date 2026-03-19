@@ -1,0 +1,132 @@
+{
+  "job_id": "cap",
+  "company_name": "CAP",
+  "role": "Gen AI Engineer-Pune",
+  "location": "Bangalore, Pune",
+  "employment_type": "",
+  "skills": [
+    {
+      "skill": "Azure",
+      "parents": [
+        "Cloud"
+      ],
+      "score": 10
+    },
+    {
+      "skill": "Python",
+      "parents": [
+        "Programming Fundamentals"
+      ],
+      "score": 10
+    },
+    {
+      "skill": "Systems",
+      "parents": [
+        "Software Engineering"
+      ],
+      "score": 10
+    },
+    {
+      "skill": "Backend",
+      "parents": [
+        "Software Engineering"
+      ],
+      "score": 8
+    },
+    {
+      "skill": "Cloud",
+      "parents": [
+        "Software Engineering"
+      ],
+      "score": 8
+    },
+    {
+      "skill": "DevOps",
+      "parents": [
+        "Cloud"
+      ],
+      "score": 8
+    },
+    {
+      "skill": "API",
+      "parents": [
+        "Backend"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "CI/CD",
+      "parents": [
+        "DevOps"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Deep Learning",
+      "parents": [
+        "Machine Learning"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Generative AI",
+      "parents": [
+        "AI/ML"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "JavaScript",
+      "parents": [
+        "Programming Fundamentals"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "JIRA",
+      "parents": [
+        "Testing"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "LLMs",
+      "parents": [
+        "Generative AI"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Machine Learning",
+      "parents": [
+        "AI/ML",
+        "Data Science"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "NLP",
+      "parents": [
+        "AI/ML"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "SQL",
+      "parents": [
+        "Database",
+        "Backend",
+        "Data Science"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Testing",
+      "parents": [
+        "QE"
+      ],
+      "score": 6
+    }
+  ],
+  "source_path": "data/job_postings/cap"
+}

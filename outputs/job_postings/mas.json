@@ -1,0 +1,24 @@
+{
+  "job_id": "mas",
+  "company_name": "Mas Pvt. Ltd.",
+  "role": "Cybersecurity Sales Specialist - Fresher",
+  "location": "Bangalore",
+  "employment_type": "",
+  "skills": [
+    {
+      "skill": "Cybersecurity",
+      "parents": [
+        "Software Engineering"
+      ],
+      "score": 10
+    },
+    {
+      "skill": "Cloud",
+      "parents": [
+        "Software Engineering"
+      ],
+      "score": 6
+    }
+  ],
+  "source_path": "data/job_postings/mas"
+}

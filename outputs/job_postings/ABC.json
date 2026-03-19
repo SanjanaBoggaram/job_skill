@@ -1,0 +1,102 @@
+{
+  "job_id": "ABC",
+  "company_name": "ABC Tech",
+  "role": "Java Full Stack Developer Intern",
+  "location": "Kammanahalli, Bengaluru, Karnataka",
+  "employment_type": "Internship (on-site)",
+  "skills": [
+    {
+      "skill": "Full Stack",
+      "parents": [
+        "Backend",
+        "Frontend"
+      ],
+      "score": 10
+    },
+    {
+      "skill": "Java",
+      "parents": [
+        "Programming Fundamentals"
+      ],
+      "score": 10
+    },
+    {
+      "skill": "Backend",
+      "parents": [
+        "Software Engineering"
+      ],
+      "score": 8
+    },
+    {
+      "skill": "MySQL",
+      "parents": [
+        "Database"
+      ],
+      "score": 8
+    },
+    {
+      "skill": "React",
+      "parents": [
+        "Frontend Frameworks"
+      ],
+      "score": 8
+    },
+    {
+      "skill": "Spring",
+      "parents": [
+        "Backend"
+      ],
+      "score": 8
+    },
+    {
+      "skill": "Spring Boot",
+      "parents": [
+        "Backend"
+      ],
+      "score": 8
+    },
+    {
+      "skill": "CSS",
+      "parents": [
+        "Frontend"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Database",
+      "parents": [
+        "Software Engineering"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Frontend",
+      "parents": [
+        "Software Engineering"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "HTML",
+      "parents": [
+        "Frontend"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "JavaScript",
+      "parents": [
+        "Programming Fundamentals"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "RESTful",
+      "parents": [
+        "Backend"
+      ],
+      "score": 6
+    }
+  ],
+  "source_path": "data/job_postings/ABC"
+}

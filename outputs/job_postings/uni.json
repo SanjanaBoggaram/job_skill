@@ -1,0 +1,33 @@
+{
+  "job_id": "uni",
+  "company_name": "Unified Brainz Virtuoso Ltd.",
+  "role": "Junior Software Engineer (Data Analyst)",
+  "location": "Ahmedabad",
+  "employment_type": "Full-time",
+  "skills": [
+    {
+      "skill": "Data Analysis",
+      "parents": [
+        "Data Science"
+      ],
+      "score": 8
+    },
+    {
+      "skill": "Excel",
+      "parents": [
+        "Data Analytics"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "SQL",
+      "parents": [
+        "Database",
+        "Backend",
+        "Data Science"
+      ],
+      "score": 6
+    }
+  ],
+  "source_path": "data/job_postings/uni"
+}

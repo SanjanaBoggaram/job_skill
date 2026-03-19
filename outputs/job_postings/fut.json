@@ -1,0 +1,102 @@
+{
+  "job_id": "fut",
+  "company_name": "Fut Technologies India Pvt. Ltd",
+  "role": "Python - AIML",
+  "location": "Kharadi, Pune",
+  "employment_type": "Internship, Fresher, Full-time",
+  "skills": [
+    {
+      "skill": "AI/ML",
+      "parents": [
+        "Software Engineering"
+      ],
+      "score": 10
+    },
+    {
+      "skill": "Machine Learning",
+      "parents": [
+        "AI/ML",
+        "Data Science"
+      ],
+      "score": 10
+    },
+    {
+      "skill": "Python",
+      "parents": [
+        "Programming Fundamentals"
+      ],
+      "score": 10
+    },
+    {
+      "skill": "Data Science",
+      "parents": [
+        "Software Engineering"
+      ],
+      "score": 8
+    },
+    {
+      "skill": "AWS",
+      "parents": [
+        "Cloud"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Azure",
+      "parents": [
+        "Cloud"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Cloud",
+      "parents": [
+        "Software Engineering"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Computer Vision",
+      "parents": [
+        "AI/ML"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Deep Learning",
+      "parents": [
+        "Machine Learning"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "GCP",
+      "parents": [
+        "Cloud"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "NumPy",
+      "parents": [
+        "Data Science"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Pandas",
+      "parents": [
+        "Data Science"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Systems",
+      "parents": [
+        "Software Engineering"
+      ],
+      "score": 6
+    }
+  ],
+  "source_path": "data/job_postings/fut"
+}

@@ -1,0 +1,38 @@
+{
+  "job_id": "Hello",
+  "company_name": "Hello Technologies Private Limited",
+  "role": "SOFTWARE DEVELOPER- Fresher",
+  "location": "Remote",
+  "employment_type": "Full-time",
+  "skills": [
+    {
+      "skill": "C++",
+      "parents": [
+        "Programming Fundamentals"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Java",
+      "parents": [
+        "Programming Fundamentals"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Python",
+      "parents": [
+        "Programming Fundamentals"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Testing",
+      "parents": [
+        "QE"
+      ],
+      "score": 6
+    }
+  ],
+  "source_path": "data/job_postings/Hello"
+}

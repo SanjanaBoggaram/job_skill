@@ -1,0 +1,116 @@
+{
+  "job_id": "IT",
+  "company_name": "IT Solutions",
+  "role": "Software Engineer (Entry-level/Fresher)",
+  "location": "Pune, Maharashtra",
+  "employment_type": "Fresher",
+  "skills": [
+    {
+      "skill": "Cloud",
+      "parents": [
+        "Software Engineering"
+      ],
+      "score": 8
+    },
+    {
+      "skill": "DevOps",
+      "parents": [
+        "Cloud"
+      ],
+      "score": 8
+    },
+    {
+      "skill": "Angular",
+      "parents": [
+        "Frontend"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "AWS",
+      "parents": [
+        "Cloud"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Azure",
+      "parents": [
+        "Cloud"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Data Engineering",
+      "parents": [
+        "Data Science",
+        "Backend"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Data Science",
+      "parents": [
+        "Software Engineering"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "GCP",
+      "parents": [
+        "Cloud"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Golang",
+      "parents": [
+        "Programming Fundamentals"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Java",
+      "parents": [
+        "Programming Fundamentals"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "JavaScript",
+      "parents": [
+        "Programming Fundamentals"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Node",
+      "parents": [
+        "Backend"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Node.js",
+      "parents": [
+        "Backend Frameworks"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "Python",
+      "parents": [
+        "Programming Fundamentals"
+      ],
+      "score": 6
+    },
+    {
+      "skill": "React",
+      "parents": [
+        "Frontend Frameworks"
+      ],
+      "score": 6
+    }
+  ],
+  "source_path": "data/job_postings/IT"
+}

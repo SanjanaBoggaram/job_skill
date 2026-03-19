@@ -1,0 +1,24 @@
+{
+  "job_id": "art",
+  "company_name": "ArtLimited",
+  "role": "QA Engineer (Freshers)",
+  "location": "Surat",
+  "employment_type": "Fresher",
+  "skills": [
+    {
+      "skill": "Testing",
+      "parents": [
+        "QE"
+      ],
+      "score": 10
+    },
+    {
+      "skill": "QA",
+      "parents": [
+        "Testing"
+      ],
+      "score": 8
+    }
+  ],
+  "source_path": "data/job_postings/art"
+}

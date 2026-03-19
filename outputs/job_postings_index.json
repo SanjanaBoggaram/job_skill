@@ -1,0 +1,121 @@
+{
+  "items": [
+    {
+      "job_id": "ABC",
+      "company_name": "ABC Tech",
+      "role": "Java Full Stack Developer Intern",
+      "location": "Kammanahalli, Bengaluru, Karnataka",
+      "employment_type": "Internship (on-site)",
+      "json_path": "outputs/job_postings/ABC.json",
+      "source_path": "data/job_postings/ABC"
+    },
+    {
+      "job_id": "art",
+      "company_name": "ArtLimited",
+      "role": "QA Engineer (Freshers)",
+      "location": "Surat",
+      "employment_type": "Fresher",
+      "json_path": "outputs/job_postings/art.json",
+      "source_path": "data/job_postings/art"
+    },
+    {
+      "job_id": "cap",
+      "company_name": "CAP",
+      "role": "Gen AI Engineer-Pune",
+      "location": "Bangalore, Pune",
+      "employment_type": "",
+      "json_path": "outputs/job_postings/cap.json",
+      "source_path": "data/job_postings/cap"
+    },
+    {
+      "job_id": "fut",
+      "company_name": "Fut Technologies India Pvt. Ltd",
+      "role": "Python - AIML",
+      "location": "Kharadi, Pune",
+      "employment_type": "Internship, Fresher, Full-time",
+      "json_path": "outputs/job_postings/fut.json",
+      "source_path": "data/job_postings/fut"
+    },
+    {
+      "job_id": "fut2",
+      "company_name": "Fut India Pvt. Ltd",
+      "role": "Fresher - AWS+Python",
+      "location": "Kharadi, Pune",
+      "employment_type": "Internship, Fresher, Full-time",
+      "json_path": "outputs/job_postings/fut2.json",
+      "source_path": "data/job_postings/fut2"
+    },
+    {
+      "job_id": "Hello",
+      "company_name": "Hello Technologies Private Limited",
+      "role": "SOFTWARE DEVELOPER- Fresher",
+      "location": "Remote",
+      "employment_type": "Full-time",
+      "json_path": "outputs/job_postings/Hello.json",
+      "source_path": "data/job_postings/Hello"
+    },
+    {
+      "job_id": "IT",
+      "company_name": "IT Solutions",
+      "role": "Software Engineer (Entry-level/Fresher)",
+      "location": "Pune, Maharashtra",
+      "employment_type": "Fresher",
+      "json_path": "outputs/job_postings/IT.json",
+      "source_path": "data/job_postings/IT"
+    },
+    {
+      "job_id": "mas",
+      "company_name": "Mas Pvt. Ltd.",
+      "role": "Cybersecurity Sales Specialist - Fresher",
+      "location": "Bangalore",
+      "employment_type": "",
+      "json_path": "outputs/job_postings/mas.json",
+      "source_path": "data/job_postings/mas"
+    },
+    {
+      "job_id": "nex",
+      "company_name": "Nex Services",
+      "role": "data scientist -AIML",
+      "location": "Ahmedabad",
+      "employment_type": "Permanent, Fresher, Full-time",
+      "json_path": "outputs/job_postings/nex.json",
+      "source_path": "data/job_postings/nex"
+    },
+    {
+      "job_id": "react",
+      "company_name": "react technologies pvt ltd",
+      "role": "ReactJS Developer Intern",
+      "location": "Indore, Madhya Pradesh",
+      "employment_type": "Permanent, Fresher, Full-time",
+      "json_path": "outputs/job_postings/react.json",
+      "source_path": "data/job_postings/react"
+    },
+    {
+      "job_id": "uni",
+      "company_name": "Unified Brainz Virtuoso Ltd.",
+      "role": "Junior Software Engineer (Data Analyst)",
+      "location": "Ahmedabad",
+      "employment_type": "Full-time",
+      "json_path": "outputs/job_postings/uni.json",
+      "source_path": "data/job_postings/uni"
+    },
+    {
+      "job_id": "vir",
+      "company_name": "Vir Ltd.",
+      "role": "Junior Software Engineer (Data Analyst)",
+      "location": "Ahmedabad",
+      "employment_type": "Full-time",
+      "json_path": "outputs/job_postings/vir.json",
+      "source_path": "data/job_postings/vir"
+    },
+    {
+      "job_id": "weby",
+      "company_name": "Weby Software",
+      "role": "QA Tester (Fresher) | Ahmedabad (Work from Office)",
+      "location": "Ahmadabad, Gujarat [WFO Only]",
+      "employment_type": "Fresher",
+      "json_path": "outputs/job_postings/weby.json",
+      "source_path": "data/job_postings/weby"
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+[
+  {
+    "skill": "Data Science",
+    "parents": [
+      "Software Engineering"
+    ],
+    "score": 10
+  },
+  {
+    "skill": "Machine Learning",
+    "parents": [
+      "AI/ML",
+      "Data Science"
+    ],
+    "score": 10
+  },
+  {
+    "skill": "Data Analysis",
+    "parents": [
+      "Data Science"
+    ],
+    "score": 9
+  },
+  {
+    "skill": "Data Cleaning",
+    "parents": [
+      "Data Science",
+      "Data Analytics"
+    ],
+    "score": 9
+  },
+  {
+    "skill": "Deep Learning",
+    "parents": [
+      "Machine Learning"
+    ],
+    "score": 9
+  },
+  {
+    "skill": "Exploratory Data Analysis (EDA)",
+    "parents": [
+      "Data Science",
+      "Data Analytics"
+    ],
+    "score": 9
+  },
+  {
+    "skill": "Generative AI",
+    "parents": [
+      "AI/ML"
+    ],
+    "score": 9
+  },
+  {
+    "skill": "LLMs",
+    "parents": [
+      "Generative AI"
+    ],
+    "score": 9
+  },
+  {
+    "skill": "Programming Fundamentals",
+    "parents": [],
+    "score": 9
+  },
+  {
+    "skill": "Computer Vision",
+    "parents": [
+      "AI/ML"
+    ],
+    "score": 8
+  },
+  {
+    "skill": "Feature Engineering",
+    "parents": [
+      "Machine Learning",
+      "Data Science"
+    ],
+    "score": 8
+  },
+  {
+    "skill": "Forecasting",
+    "parents": [
+      "Time Series Analysis"
+    ],
+    "score": 8
+  },
+  {
+    "skill": "NLP",
+    "parents": [
+      "AI/ML"
+    ],
+    "score": 8
+  },
+  {
+    "skill": "NumPy",
+    "parents": [
+      "Data Science"
+    ],
+    "score": 8
+  },
+  {
+    "skill": "Pandas",
+    "parents": [
+      "Data Science"
+    ],
+    "score": 8
+  },
+  {
+    "skill": "RAG",
+    "parents": [
+      "Generative AI"
+    ],
+    "score": 8
+  },
+  {
+    "skill": "Time Series Analysis",
+    "parents": [
+      "Data Science"
+    ],
+    "score": 8
+  },
+  {
+    "skill": "Cloud",
+    "parents": [
+      "Software Engineering"
+    ],
+    "score": 7
+  },
+  {
+    "skill": "Data Visualization",
+    "parents": [
+      "Data Analytics",
+      "Data Science"
+    ],
+    "score": 7
+  },
+  {
+    "skill": "Distributed Systems",
+    "parents": [
+      "Systems"
+    ],
+    "score": 7
+  },
+  {
+    "skill": "Docker",
+    "parents": [
+      "DevOps"
+    ],
+    "score": 7
+  },
+  {
+    "skill": "Full Stack",
+    "parents": [
+      "Backend",
+      "Frontend"
+    ],
+    "score": 7
+  },
+  {
+    "skill": "Node.js",
+    "parents": [
+      "Backend Frameworks"
+    ],
+    "score": 7
+  },
+  {
+    "skill": "NoSQL",
+    "parents": [
+      "Database",
+      "Backend"
+    ],
+    "score": 7
+  },
+  {
+    "skill": "React",
+    "parents": [
+      "Frontend Frameworks"
+    ],
+    "score": 7
+  },
+  {
+    "skill": "SQL",
+    "parents": [
+      "Database",
+      "Backend",
+      "Data Science"
+    ],
+    "score": 7
+  },
+  {
+    "skill": "Cybersecurity",
+    "parents": [
+      "Software Engineering"
+    ],
+    "score": 5
+  }
+]

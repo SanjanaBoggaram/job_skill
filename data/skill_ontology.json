@@ -165,5 +165,109 @@
 
   "GPGPU Programming": {
     "parents": ["Systems", "AI/ML"]
+  },
+
+  "Data Analytics": {
+    "parents": ["Data Science"]
+  },
+
+  "Business Intelligence": {
+    "parents": ["Data Analytics"]
+  },
+
+  "Analytics Engineering": {
+    "parents": ["Data Analytics", "Data Engineering"]
+  },
+
+  "Data Cleaning": {
+    "parents": ["Data Science", "Data Analytics"]
+  },
+
+  "Exploratory Data Analysis (EDA)": {
+    "parents": ["Data Science", "Data Analytics"]
+  },
+
+  "Feature Engineering": {
+    "parents": ["Machine Learning", "Data Science"]
+  },
+
+  "Data Visualization": {
+    "parents": ["Data Analytics", "Data Science"]
+  },
+
+  "Tableau": {
+    "parents": ["Data Visualization", "Business Intelligence"]
+  },
+
+  "Power BI": {
+    "parents": ["Data Visualization", "Business Intelligence"]
+  },
+
+  "Excel": {
+    "parents": ["Data Analytics"]
+  },
+
+  "A/B Testing": {
+    "parents": ["Data Science", "Statistics"]
+  },
+
+  "Hypothesis Testing": {
+    "parents": ["Statistics", "Data Science"]
+  },
+
+  "Time Series Analysis": {
+    "parents": ["Data Science"]
+  },
+
+  "Forecasting": {
+    "parents": ["Time Series Analysis"]
+  },
+
+  "BigQuery": {
+    "parents": ["Data Engineering", "Cloud"]
+  },
+
+  "Snowflake": {
+    "parents": ["Data Engineering", "Cloud"]
+  },
+
+  "Data Warehousing": {
+    "parents": ["Data Engineering"]
+  },
+
+  "Data Modeling": {
+    "parents": ["Data Engineering", "Analytics Engineering"]
+  },
+
+  "ETL Pipelines": {
+    "parents": ["Data Engineering"]
+  },
+
+  "Airflow": {
+    "parents": ["Data Engineering"]
+  },
+
+  "dbt": {
+    "parents": ["Analytics Engineering"]
+  },
+
+  "Pandas": {
+    "parents": ["Data Science"]
+  },
+
+  "NumPy": {
+    "parents": ["Data Science"]
+  },
+
+  "Matplotlib": {
+    "parents": ["Data Visualization"]
+  },
+
+  "Seaborn": {
+    "parents": ["Data Visualization"]
+  },
+
+  "Plotly": {
+    "parents": ["Data Visualization"]
   }
 }

@@ -1,20 +1,11 @@
 # Design Doc — job_skill
 
 ## 1) Goal
-
-Given:
-- a candidate resume (PDF)
-- a synthetic corpus of job postings (plaintext)
-- a skill ontology (skill → parent skills)
-- a resources dataset (courses/projects by category)
-
-Produce:
-1. Resume skills JSON (skill, parents, score)
-2. Job postings JSONs (metadata + skills + role embedding)
-3. A filtered subset of job postings based on user preferences (location hard filter + role semantic similarity)
-4. An average job-skill profile for the filtered postings
-5. A skill-gap JSON (job average minus resume)
-6. A learning plan report grounded in the provided resources
+Skill-Bridge Career Navigator  
+Problem Statement: Students and early-career professionals often find a "skills gap" between 
+their academic knowledge and the specific technical requirements of job postings. Navigating 
+multiple job boards and certification sites makes it difficult to see a clear path from their current 
+skill set to their "dream role." 
 
 
 ## 2) Tech stack

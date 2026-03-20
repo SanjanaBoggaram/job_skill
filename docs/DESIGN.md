@@ -136,7 +136,7 @@ The index is built from the per-job JSONs after embeddings are added.
 
 
 ## 5) Pipeline overview (end-to-end)
-
+![Architecture](images/skill.jpg)
 ### Step A — Resume skill extraction
 Script: `scripts/extract_resume_skills.py`
 The user uploads a pdf of their resume

@@ -1,0 +1,161 @@
+[
+  {
+    "skill": "AWS",
+    "parents": [
+      "Cloud"
+    ],
+    "score": 6.0
+  },
+  {
+    "skill": "CI/CD",
+    "parents": [
+      "DevOps"
+    ],
+    "score": 6.0
+  },
+  {
+    "skill": "Computer Vision",
+    "parents": [
+      "AI/ML"
+    ],
+    "score": 6.0
+  },
+  {
+    "skill": "GCP",
+    "parents": [
+      "Cloud"
+    ],
+    "score": 6.0
+  },
+  {
+    "skill": "AI/ML",
+    "parents": [
+      "Software Engineering"
+    ],
+    "score": 3.67
+  },
+  {
+    "skill": "Deep Learning",
+    "parents": [
+      "Machine Learning"
+    ],
+    "score": 3.0
+  },
+  {
+    "skill": "Cloud",
+    "parents": [
+      "Software Engineering"
+    ],
+    "score": 2.0
+  },
+  {
+    "skill": "Airflow",
+    "parents": [
+      "Data Engineering"
+    ],
+    "score": 1.0
+  },
+  {
+    "skill": "Data Analytics",
+    "parents": [
+      "Data Science"
+    ],
+    "score": 1.0
+  },
+  {
+    "skill": "Excel",
+    "parents": [
+      "Data Analytics"
+    ],
+    "score": 1.0
+  },
+  {
+    "skill": "Machine Learning",
+    "parents": [
+      "AI/ML",
+      "Data Science"
+    ],
+    "score": 1.0
+  },
+  {
+    "skill": "NLP",
+    "parents": [
+      "AI/ML"
+    ],
+    "score": 0.0
+  },
+  {
+    "skill": "Generative AI",
+    "parents": [
+      "AI/ML"
+    ],
+    "score": -0.5
+  },
+  {
+    "skill": "Data Cleaning",
+    "parents": [
+      "Data Science",
+      "Data Analytics"
+    ],
+    "score": -1.0
+  },
+  {
+    "skill": "Data Science",
+    "parents": [
+      "Software Engineering"
+    ],
+    "score": -1.0
+  },
+  {
+    "skill": "Feature Engineering",
+    "parents": [
+      "Machine Learning",
+      "Data Science"
+    ],
+    "score": -1.0
+  },
+  {
+    "skill": "Azure",
+    "parents": [
+      "Cloud"
+    ],
+    "score": -2.0
+  },
+  {
+    "skill": "NumPy",
+    "parents": [
+      "Data Science"
+    ],
+    "score": -2.0
+  },
+  {
+    "skill": "Pandas",
+    "parents": [
+      "Data Science"
+    ],
+    "score": -2.0
+  },
+  {
+    "skill": "SQL",
+    "parents": [
+      "Database",
+      "Backend",
+      "Data Science"
+    ],
+    "score": -2.0
+  },
+  {
+    "skill": "Docker",
+    "parents": [
+      "DevOps"
+    ],
+    "score": -3.0
+  },
+  {
+    "skill": "Python",
+    "parents": [
+      "Programming Fundamentals"
+    ],
+    "score": -3.0
+  }
+]

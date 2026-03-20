@@ -1,0 +1,195 @@
+{
+  "AWS": [
+    {
+      "type": "course",
+      "title": "AWS Cloud Practitioner Essentials",
+      "platform": "AWS",
+      "link": "https://www.aws.training",
+      "level": "beginner",
+      "description": "Introduces AWS services, cloud architecture, security, and pricing models."
+    },
+    {
+      "type": "project",
+      "title": "Deploy Scalable Web App on Cloud",
+      "description": "Deploy a full-stack application using AWS/GCP/Azure with load balancing, database, and storage services."
+    }
+  ],
+  "CI/CD": [
+    {
+      "type": "course",
+      "title": "CI/CD with GitHub Actions",
+      "platform": "YouTube",
+      "link": "https://www.youtube.com/results?search_query=github+actions+tutorial",
+      "level": "intermediate",
+      "description": "Learn how to automate build, test, and deployment pipelines using GitHub Actions."
+    },
+    {
+      "type": "project",
+      "title": "Automated Deployment Pipeline",
+      "description": "Set up CI/CD pipelines for a backend or ML project including testing, building, and deployment automation."
+    }
+  ],
+  "Computer Vision": [
+    {
+      "type": "course",
+      "title": "Deep Learning Specialization",
+      "platform": "Coursera",
+      "link": "https://www.coursera.org/specializations/deep-learning",
+      "level": "intermediate",
+      "description": "Covers neural networks, CNNs, RNNs, optimization techniques, and practical deep learning workflows using real-world datasets."
+    },
+    {
+      "type": "project",
+      "title": "Image Classifier with Deployment",
+      "description": "Train a CNN model for image classification and deploy it using Flask or FastAPI with Docker. Includes model serving and API integration."
+    }
+  ],
+  "GCP": [
+    {
+      "type": "course",
+      "title": "Google Cloud Fundamentals (GCP)",
+      "platform": "Google Cloud",
+      "link": "https://cloud.google.com/training",
+      "level": "beginner",
+      "description": "Covers GCP services including compute, storage, networking, and deployment."
+    },
+    {
+      "type": "project",
+      "title": "Deploy Scalable Web App on Cloud",
+      "description": "Deploy a full-stack application using AWS/GCP/Azure with load balancing, database, and storage services."
+    }
+  ],
+  "AI/ML": [
+    {
+      "type": "course",
+      "title": "Deep Learning Specialization",
+      "platform": "Coursera",
+      "link": "https://www.coursera.org/specializations/deep-learning",
+      "level": "intermediate",
+      "description": "Covers neural networks, CNNs, RNNs, optimization techniques, and practical deep learning workflows using real-world datasets."
+    },
+    {
+      "type": "project",
+      "title": "Image Classifier with Deployment",
+      "description": "Train a CNN model for image classification and deploy it using Flask or FastAPI with Docker. Includes model serving and API integration."
+    },
+    {
+      "type": "course",
+      "title": "NLP with HuggingFace",
+      "platform": "YouTube",
+      "link": "https://www.youtube.com/@HuggingFace",
+      "level": "intermediate",
+      "description": "Covers transformer models, tokenization, embeddings, and fine-tuning NLP models using HuggingFace libraries."
+    },
+    {
+      "type": "project",
+      "title": "Build Chatbot with Transformers",
+      "description": "Develop a chatbot using transformer models like BERT or GPT. Includes text preprocessing, response generation, and evaluation."
+    }
+  ],
+  "Deep Learning": [],
+  "Cloud": [
+    {
+      "type": "course",
+      "title": "Cloud Computing Fundamentals",
+      "platform": "YouTube",
+      "link": "https://www.youtube.com/results?search_query=cloud+computing+full+course",
+      "level": "beginner",
+      "description": "Covers core cloud concepts including IaaS, PaaS, SaaS, networking, and distributed systems."
+    },
+    {
+      "type": "course",
+      "title": "AWS Cloud Practitioner Essentials",
+      "platform": "AWS",
+      "link": "https://www.aws.training",
+      "level": "beginner",
+      "description": "Introduces AWS services, cloud architecture, security, and pricing models."
+    },
+    {
+      "type": "project",
+      "title": "Deploy Scalable Web App on Cloud",
+      "description": "Deploy a full-stack application using AWS/GCP/Azure with load balancing, database, and storage services."
+    }
+  ],
+  "Airflow": [
+    {
+      "type": "project",
+      "title": "ETL Pipeline with Airflow",
+      "description": "Build pipeline using Airflow DAGs."
+    }
+  ],
+  "Data Analytics": [
+    {
+      "type": "course",
+      "title": "Google Data Analytics",
+      "platform": "Coursera",
+      "link": "https://www.coursera.org/professional-certificates/google-data-analytics",
+      "level": "beginner",
+      "description": "Covers data cleaning, visualization, and dashboards."
+    },
+    {
+      "type": "project",
+      "title": "Dashboard Project",
+      "description": "Create dashboards using Excel or Power BI."
+    },
+    {
+      "type": "course",
+      "title": "Excel for Data Analysis",
+      "platform": "YouTube",
+      "link": "https://www.youtube.com/results?search_query=excel+data+analysis+course",
+      "level": "beginner",
+      "description": "Covers Excel fundamentals including formulas, pivot tables, data cleaning, and visualization techniques."
+    }
+  ],
+  "Excel": [
+    {
+      "type": "project",
+      "title": "Dashboard Project",
+      "description": "Create dashboards using Excel or Power BI."
+    },
+    {
+      "type": "course",
+      "title": "Excel for Data Analysis",
+      "platform": "YouTube",
+      "link": "https://www.youtube.com/results?search_query=excel+data+analysis+course",
+      "level": "beginner",
+      "description": "Covers Excel fundamentals including formulas, pivot tables, data cleaning, and visualization techniques."
+    },
+    {
+      "type": "course",
+      "title": "Advanced Excel Skills",
+      "platform": "Coursera",
+      "link": "https://www.coursera.org/specializations/excel",
+      "level": "intermediate",
+      "description": "Teaches advanced Excel concepts such as macros, automation, advanced formulas, and large dataset handling."
+    }
+  ],
+  "Machine Learning": [
+    {
+      "type": "course",
+      "title": "Deep Learning Specialization",
+      "platform": "Coursera",
+      "link": "https://www.coursera.org/specializations/deep-learning",
+      "level": "intermediate",
+      "description": "Covers neural networks, CNNs, RNNs, optimization techniques, and practical deep learning workflows using real-world datasets."
+    },
+    {
+      "type": "course",
+      "title": "NLP with HuggingFace",
+      "platform": "YouTube",
+      "link": "https://www.youtube.com/@HuggingFace",
+      "level": "intermediate",
+      "description": "Covers transformer models, tokenization, embeddings, and fine-tuning NLP models using HuggingFace libraries."
+    },
+    {
+      "type": "project",
+      "title": "Image Classifier with Deployment",
+      "description": "Train a CNN model for image classification and deploy it using Flask or FastAPI with Docker. Includes model serving and API integration."
+    },
+    {
+      "type": "project",
+      "title": "Build Chatbot with Transformers",
+      "description": "Develop a chatbot using transformer models like BERT or GPT. Includes text preprocessing, response generation, and evaluation."
+    }
+  ]
+}

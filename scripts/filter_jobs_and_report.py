@@ -12,6 +12,12 @@ from typing import Any
 from dotenv import load_dotenv
 
 
+OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+# Keep aligned with scripts/extract_resume_skills.py and scripts/build_job_postings_index.py
+OPENROUTER_CHAT_MODEL = "nvidia/nemotron-3-nano-30b-a3b"
+OPENROUTER_EMBED_MODEL = "nvidia/llama-nemotron-embed-vl-1b-v2:free"
+
+
 def load_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -38,25 +44,31 @@ def cosine_similarity(a: list[float], b: list[float]) -> float:
 
 
 def embed_query(text: str, embedding_model: str) -> list[float]:
-    from langchain_google_genai import GoogleGenerativeAIEmbeddings
+    import requests
 
-    emb = GoogleGenerativeAIEmbeddings(model=embedding_model)
-    v = emb.embed_query(text)
-    return [float(x) for x in v]
+    api_key = os.getenv("OPENROUTER_API_KEY", "").strip()
+    if not api_key:
+        raise RuntimeError("Missing OPENROUTER_API_KEY in .env")
 
-
-def normalize_chat_model_name(name: str) -> str:
-    raw = (name or "").strip()
-    if not raw:
-        return "models/gemini-2.0-flash"
-    if raw.startswith("models/"):
-        return raw
-    legacy = raw.casefold()
-    if legacy in {"gemini-1.5-flash", "gemini-1.5-flash-latest"}:
-        return "models/gemini-flash-latest"
-    if legacy in {"gemini-1.5-pro", "gemini-1.5-pro-latest"}:
-        return "models/gemini-pro-latest"
-    return f"models/{raw}"
+    r = requests.post(
+        f"{OPENROUTER_BASE_URL}/embeddings",
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+        },
+        json={"model": embedding_model, "input": text},
+        timeout=60,
+    )
+    if r.status_code >= 400:
+        raise RuntimeError(f"OpenRouter embeddings error {r.status_code}: {r.text}")
+    data = r.json()
+    items = data.get("data")
+    if not isinstance(items, list) or not items:
+        raise RuntimeError(f"Unexpected embeddings response: {data}")
+    emb = items[0].get("embedding")
+    if not isinstance(emb, list) or not emb:
+        raise RuntimeError(f"Missing embedding in response: {data}")
+    return [float(x) for x in emb]
 
 
 def load_ontology(ontology_path: Path) -> dict[str, list[str]]:
@@ -106,7 +118,7 @@ def filter_jobs(
     if not role_query or role_query.strip().casefold() == "none":
         return hard_filtered[:top_k] if top_k > 0 else hard_filtered
 
-    embedding_model = str(hard_filtered[0].get("embedding_model") or os.getenv("GEMINI_EMBEDDING_MODEL", "models/text-embedding-004"))
+    embedding_model = str(hard_filtered[0].get("embedding_model") or OPENROUTER_EMBED_MODEL)
     qvec = embed_query(role_query, embedding_model=embedding_model)
 
     scored: list[tuple[float, dict[str, Any]]] = []
@@ -188,10 +200,12 @@ def generate_gap_report_with_agent(
     ontology: dict[str, list[str]],
     model_name: str,
 ) -> str:
-    from langchain_core.messages import HumanMessage, SystemMessage
-    from langchain_google_genai import ChatGoogleGenerativeAI
+    from openai import OpenAI
 
-    llm = ChatGoogleGenerativeAI(model=model_name, temperature=0.3)
+    client = OpenAI(
+        api_key=os.getenv("OPENROUTER_API_KEY"),
+        base_url=OPENROUTER_BASE_URL,
+    )
     system = (
         "You are a career coach. Compare a candidate's resume skills vs the averaged target job skills. "
         "Produce an actionable skill-gap report. Prioritize skills that are high-scoring in the job average "
@@ -206,9 +220,15 @@ def generate_gap_report_with_agent(
         "skill_ontology": ontology,
     }
     human = "Data (JSON):\n\n" + json.dumps(payload, ensure_ascii=False, indent=2)
-    msg = llm.invoke([SystemMessage(content=system), HumanMessage(content=human)])
-    content = getattr(msg, "content", None)
-    return (content if isinstance(content, str) else str(msg)).strip()
+    resp = client.chat.completions.create(
+        model=(model_name or OPENROUTER_CHAT_MODEL),
+        messages=[
+            {"role": "system", "content": system},
+            {"role": "user", "content": human},
+        ],
+        temperature=0.2,
+    )
+    return (resp.choices[0].message.content or "").strip()
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -231,11 +251,11 @@ def main() -> int:
     args = build_parser().parse_args()
 
     load_dotenv()
-    google_key = os.getenv("GOOGLE_API_KEY", "").strip()
-    if not google_key:
-        raise RuntimeError("Missing GOOGLE_API_KEY in .env")
+    openrouter_key = os.getenv("OPENROUTER_API_KEY", "").strip()
+    if not openrouter_key:
+        raise RuntimeError("Missing OPENROUTER_API_KEY in .env")
 
-    model_name = normalize_chat_model_name(os.getenv("GEMINI_MODEL", "models/gemini-2.0-flash"))
+    model_name = OPENROUTER_CHAT_MODEL
 
     index_data = load_json(Path(args.index))
     index_items = index_data.get("items", [])
@@ -263,13 +283,13 @@ def main() -> int:
     if not isinstance(resume_skills, list):
         raise ValueError("Resume skills JSON must be an array")
 
-    report = generate_gap_report_with_agent(resume_skills, avg, ontology=ontology, model_name=model_name)
-    write_text(Path(args.out_report), report)
+    # report = generate_gap_report_with_agent(resume_skills, avg, ontology=ontology, model_name=model_name)
+    # write_text(Path(args.out_report), report)
 
     print(f"Filtered jobs: {len(filtered)}")
     print(f"Wrote filtered jobs to {args.out_filtered}")
     print(f"Wrote average job skills to {args.out_average}")
-    print(f"Wrote gap report to {args.out_report}")
+    # print(f"Wrote gap report to {args.out_report}")
     return 0
 
 

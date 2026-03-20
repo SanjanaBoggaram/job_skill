@@ -269,5 +269,68 @@
 
   "Plotly": {
     "parents": ["Data Visualization"]
+  },
+
+  "Python": {
+    "parents": ["Programming Fundamentals"]
+  },
+  "Java": {
+    "parents": ["Programming Fundamentals"]
+  },
+  "C++": {
+    "parents": ["Programming Fundamentals"]
+  },
+  "C#": {
+    "parents": ["Programming Fundamentals"]
+  },
+  "JavaScript": {
+    "parents": ["Programming Fundamentals", "Frontend", "Backend"]
+  },
+  "TypeScript": {
+    "parents": ["Programming Fundamentals", "Frontend"]
+  },
+
+  "HTML": {
+    "parents": ["Frontend"]
+  },
+  "CSS": {
+    "parents": ["Frontend"]
+  },
+  "Next.js": {
+    "parents": ["Frontend Frameworks"]
+  },
+
+  "Node": {
+    "parents": ["Backend"]
+  },
+  "REST": {
+    "parents": ["Backend"]
+  },
+  "API": {
+    "parents": ["Backend"]
+  },
+
+  "AWS": {
+    "parents": ["Cloud"]
+  },
+  "GCP": {
+    "parents": ["Cloud"]
+  },
+  "Azure": {
+    "parents": ["Cloud"]
+  },
+
+  "Git": {
+    "parents": ["Software Engineering"]
+  },
+
+  "MongoDB": {
+    "parents": ["NoSQL", "Database"]
+  },
+  "PostgreSQL": {
+    "parents": ["SQL", "Database"]
+  },
+  "MySQL": {
+    "parents": ["SQL", "Database"]
   }
 }

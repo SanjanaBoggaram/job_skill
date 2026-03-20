@@ -147,20 +147,96 @@ def heuristic_extract_skills(resume_text: str, ontology: dict[str, list[str]]) -
     return items[:40]
 
 
+# def llm_extract_skills_with_agent(
+#     resume_text: str,
+#     ontology: dict[str, list[str]],
+#     model_name: str,
+# ) -> list[ExtractedSkill]:
+#     # from langchain.agents import AgentExecutor, create_tool_calling_agent
+#     # from langchain_core.prompts import ChatPromptTemplate
+#     # from langchain_core.tools import tool
+#     from langchain_google_genai import ChatGoogleGenerativeAI
+
+#     @tool
+#     def get_skill_ontology() -> str:
+#         """Return the full skill ontology as JSON mapping skill -> parents."""
+#         return json.dumps(ontology, ensure_ascii=False)
+
+#     system = (
+#         "You are a resume skill extraction agent. "
+#         "Given resume text, extract a list of concrete skills mentioned or strongly implied. "
+#         "For each skill, output an object with: "
+#         "skill (string), parents (list of parent skill names), score (integer 0-10). "
+#         "Use the ontology tool to map skills to parents where applicable; when a skill is not "
+#         "in the ontology, pick the closest parent categories from the ontology (or [] if none). "
+#         "Score guidance: 9-10 if used across multiple projects/roles with strong evidence; "
+#         "7-8 if used meaningfully in at least one project/role; 5-6 if listed as a skill or lightly used; "
+#         "1-4 if only mentioned in passing. "
+#         "Return ONLY valid JSON: an array of objects. No markdown, no commentary."
+#     )
+
+#     prompt = ChatPromptTemplate.from_messages(
+#         [
+#             ("system", system),
+#             ("human", "Resume text:\n\n{resume_text}\n\nRemember: output only JSON."),
+#         ]
+#     )
+
+#     llm = ChatGoogleGenerativeAI(model=model_name, temperature=0.2)
+#     tools = [get_skill_ontology]
+#     agent = create_tool_calling_agent(llm, tools, prompt)
+#     executor = AgentExecutor(agent=agent, tools=tools, verbose=False)
+
+#     result = executor.invoke({"resume_text": resume_text})
+#     raw = strip_code_fences(str(result.get("output", "")))
+
+#     parsed = json.loads(raw)
+#     if not isinstance(parsed, list):
+#         raise ValueError("LLM output was not a JSON array")
+
+#     items: list[ExtractedSkill] = []
+#     for obj in parsed:
+#         if not isinstance(obj, dict):
+#             continue
+#         skill = str(obj.get("skill", "")).strip()
+#         if not skill:
+#             continue
+#         parents_val = obj.get("parents", [])
+#         if isinstance(parents_val, str):
+#             parents = [parents_val]
+#         elif isinstance(parents_val, list):
+#             parents = [str(p) for p in parents_val if str(p).strip()]
+#         else:
+#             parents = []
+#         try:
+#             score = int(obj.get("score", 0))
+#         except Exception:
+#             score = 0
+#         score = max(0, min(10, score))
+#         items.append(ExtractedSkill(skill=skill, parents=parents, score=score))
+
+#     # De-dup by skill name (case-insensitive), keep highest score.
+#     best: dict[str, ExtractedSkill] = {}
+#     for item in items:
+#         key = item.skill.casefold()
+#         prev = best.get(key)
+#         if prev is None or item.score > prev.score:
+#             best[key] = item
+
+#     return sorted(best.values(), key=lambda x: (-x.score, x.skill.casefold()))
+
 def llm_extract_skills_with_agent(
     resume_text: str,
     ontology: dict[str, list[str]],
-    model_name: str,
+    model_name: str,   # keep param (not used heavily)
 ) -> list[ExtractedSkill]:
-    from langchain.agents import AgentExecutor, create_tool_calling_agent
-    from langchain_core.prompts import ChatPromptTemplate
-    from langchain_core.tools import tool
-    from langchain_google_genai import ChatGoogleGenerativeAI
 
-    @tool
-    def get_skill_ontology() -> str:
-        """Return the full skill ontology as JSON mapping skill -> parents."""
-        return json.dumps(ontology, ensure_ascii=False)
+    from openai import OpenAI
+
+    client = OpenAI(
+        api_key=os.getenv("OPENROUTER_API_KEY"),
+        base_url="https://openrouter.ai/api/v1",
+    )
 
     system = (
         "You are a resume skill extraction agent. "
@@ -175,32 +251,65 @@ def llm_extract_skills_with_agent(
         "Return ONLY valid JSON: an array of objects. No markdown, no commentary."
     )
 
-    prompt = ChatPromptTemplate.from_messages(
-        [
-            ("system", system),
-            ("human", "Resume text:\n\n{resume_text}\n\nRemember: output only JSON."),
-        ]
+    full_prompt = f"""
+{system}
+
+Here is the skill ontology (JSON mapping skill -> parents):
+{json.dumps(ontology, ensure_ascii=False)}
+
+Resume text:
+
+{resume_text}
+
+Remember: output only JSON.
+"""
+
+    response = client.chat.completions.create(
+        #model="mistralai/mistral-7b-instruct",  # free + good
+        model="nvidia/nemotron-3-nano-30b-a3b",
+        #model="black-forest-labs/flux.2-klein-4b",
+        messages=[
+            {"role": "system", "content": "You output only JSON."},
+            {"role": "user", "content": full_prompt},
+        ],
+        temperature=0.0,
     )
+    ###
+    # FIRST get raw
+    raw = strip_code_fences(response.choices[0].message.content)
 
-    llm = ChatGoogleGenerativeAI(model=model_name, temperature=0.2)
-    tools = [get_skill_ontology]
-    agent = create_tool_calling_agent(llm, tools, prompt)
-    executor = AgentExecutor(agent=agent, tools=tools, verbose=False)
+    print("RAW OUTPUT:\n", raw)
 
-    result = executor.invoke({"resume_text": resume_text})
-    raw = strip_code_fences(str(result.get("output", "")))
+    if not raw.strip():
+        raise ValueError("LLM returned empty response")
 
-    parsed = json.loads(raw)
+    # THEN parse
+    try:
+        parsed = json.loads(raw)
+    except json.JSONDecodeError:
+        print("⚠️ Invalid JSON from model:\n", raw)
+
+        # fallback: try extracting JSON array
+        import re
+        match = re.search(r"\[.*\]", raw, re.DOTALL)
+        if match:
+            parsed = json.loads(match.group(0))
+        else:
+            raise
+    ###
     if not isinstance(parsed, list):
         raise ValueError("LLM output was not a JSON array")
 
     items: list[ExtractedSkill] = []
+
     for obj in parsed:
         if not isinstance(obj, dict):
             continue
+
         skill = str(obj.get("skill", "")).strip()
         if not skill:
             continue
+
         parents_val = obj.get("parents", [])
         if isinstance(parents_val, str):
             parents = [parents_val]
@@ -208,14 +317,17 @@ def llm_extract_skills_with_agent(
             parents = [str(p) for p in parents_val if str(p).strip()]
         else:
             parents = []
+
         try:
             score = int(obj.get("score", 0))
         except Exception:
             score = 0
+
         score = max(0, min(10, score))
+
         items.append(ExtractedSkill(skill=skill, parents=parents, score=score))
 
-    # De-dup by skill name (case-insensitive), keep highest score.
+    # De-dup
     best: dict[str, ExtractedSkill] = {}
     for item in items:
         key = item.skill.casefold()
@@ -224,8 +336,6 @@ def llm_extract_skills_with_agent(
             best[key] = item
 
     return sorted(best.values(), key=lambda x: (-x.score, x.skill.casefold()))
-
-
 def write_output_json(items: Iterable[ExtractedSkill], output_path: Path) -> None:
     payload: list[dict[str, Any]] = [
         {"skill": i.skill, "parents": i.parents, "score": i.score} for i in items
@@ -276,15 +386,17 @@ def main() -> int:
     resume_text = normalize_text(extract_text_from_pdf(resume_path))
 
     items: list[ExtractedSkill]
-
-    model_name = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
-    google_key = os.getenv("GOOGLE_API_KEY", "").strip()
+    model_name = "gemini-2.0-flash-lite"
+    #model_name = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
+    #google_key = os.getenv("GOOGLE_API_KEY", "").strip()
+    ###
+    openrouter_key = os.getenv("OPENROUTER_API_KEY", "").strip()
 
     if args.use_llm:
-        if not google_key:
-            raise RuntimeError(
-                "--use-llm was set but GOOGLE_API_KEY is missing. Put it in .env and re-run."
-            )
+        if not openrouter_key:
+            raise RuntimeError("OPENROUTER_API_KEY missing")
+    ###
+    
         items = llm_extract_skills_with_agent(resume_text, ontology, model_name=model_name)
     else:
         items = heuristic_extract_skills(resume_text, ontology)

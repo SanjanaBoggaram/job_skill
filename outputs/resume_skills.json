@@ -4,91 +4,99 @@
     "parents": [
       "Software Engineering"
     ],
-    "score": 10
+    "score": 9
+  },
+  {
+    "skill": "Docker",
+    "parents": [
+      "DevOps"
+    ],
+    "score": 9
   },
   {
     "skill": "Machine Learning",
     "parents": [
-      "AI/ML",
-      "Data Science"
-    ],
-    "score": 10
-  },
-  {
-    "skill": "Data Analysis",
-    "parents": [
-      "Data Science"
-    ],
-    "score": 9
-  },
-  {
-    "skill": "Data Cleaning",
-    "parents": [
-      "Data Science",
-      "Data Analytics"
-    ],
-    "score": 9
-  },
-  {
-    "skill": "Deep Learning",
-    "parents": [
-      "Machine Learning"
-    ],
-    "score": 9
-  },
-  {
-    "skill": "Exploratory Data Analysis (EDA)",
-    "parents": [
-      "Data Science",
-      "Data Analytics"
-    ],
-    "score": 9
-  },
-  {
-    "skill": "Generative AI",
-    "parents": [
       "AI/ML"
     ],
     "score": 9
   },
   {
-    "skill": "LLMs",
+    "skill": "MongoDB",
     "parents": [
-      "Generative AI"
+      "NoSQL"
     ],
     "score": 9
   },
   {
-    "skill": "Programming Fundamentals",
-    "parents": [],
+    "skill": "Python",
+    "parents": [
+      "Programming Fundamentals"
+    ],
     "score": 9
   },
   {
-    "skill": "Computer Vision",
+    "skill": "React",
     "parents": [
-      "AI/ML"
+      "Frontend Frameworks"
+    ],
+    "score": 9
+  },
+  {
+    "skill": "Azure",
+    "parents": [
+      "Cloud"
     ],
     "score": 8
   },
   {
-    "skill": "Feature Engineering",
+    "skill": "Backend",
     "parents": [
-      "Machine Learning",
-      "Data Science"
+      "Software Engineering"
     ],
     "score": 8
   },
   {
-    "skill": "Forecasting",
+    "skill": "Express.js",
     "parents": [
-      "Time Series Analysis"
+      "Backend Frameworks"
     ],
     "score": 8
   },
   {
-    "skill": "NLP",
+    "skill": "Frontend",
     "parents": [
-      "AI/ML"
+      "Software Engineering"
+    ],
+    "score": 8
+  },
+  {
+    "skill": "Full Stack",
+    "parents": [
+      "Backend",
+      "Frontend"
+    ],
+    "score": 8
+  },
+  {
+    "skill": "JavaScript",
+    "parents": [
+      "Programming Fundamentals",
+      "Frontend",
+      "Backend"
+    ],
+    "score": 8
+  },
+  {
+    "skill": "MySQL",
+    "parents": [
+      "SQL"
+    ],
+    "score": 8
+  },
+  {
+    "skill": "Node.js",
+    "parents": [
+      "Backend Frameworks"
     ],
     "score": 8
   },
@@ -107,91 +115,318 @@
     "score": 8
   },
   {
+    "skill": "Agentic AI",
+    "parents": [
+      "AI/ML"
+    ],
+    "score": 7
+  },
+  {
+    "skill": "CNN",
+    "parents": [
+      "Deep Learning"
+    ],
+    "score": 7
+  },
+  {
+    "skill": "Data Analytics",
+    "parents": [
+      "Data Science"
+    ],
+    "score": 7
+  },
+  {
+    "skill": "Data Cleaning",
+    "parents": [
+      "Data Science",
+      "Data Analytics"
+    ],
+    "score": 7
+  },
+  {
+    "skill": "Data Engineering",
+    "parents": [],
+    "score": 7
+  },
+  {
+    "skill": "Deep Learning",
+    "parents": [
+      "Machine Learning"
+    ],
+    "score": 7
+  },
+  {
+    "skill": "Exploratory Data Analysis (EDA)",
+    "parents": [
+      "Data Science",
+      "Data Analytics"
+    ],
+    "score": 7
+  },
+  {
+    "skill": "Feature Engineering",
+    "parents": [
+      "Machine Learning",
+      "Data Science"
+    ],
+    "score": 7
+  },
+  {
+    "skill": "Forecasting",
+    "parents": [
+      "Time Series Analysis"
+    ],
+    "score": 7
+  },
+  {
     "skill": "RAG",
     "parents": [
       "Generative AI"
     ],
-    "score": 8
+    "score": 7
+  },
+  {
+    "skill": "Random Forest",
+    "parents": [
+      "Machine Learning"
+    ],
+    "score": 7
+  },
+  {
+    "skill": "System Design",
+    "parents": [
+      "Software Engineering",
+      "Distributed Systems"
+    ],
+    "score": 7
   },
   {
     "skill": "Time Series Analysis",
     "parents": [
       "Data Science"
     ],
-    "score": 8
-  },
-  {
-    "skill": "Cloud",
-    "parents": [
-      "Software Engineering"
-    ],
     "score": 7
   },
   {
-    "skill": "Data Visualization",
+    "skill": "CSS",
     "parents": [
-      "Data Analytics",
-      "Data Science"
+      "Frontend"
     ],
-    "score": 7
+    "score": 6
   },
   {
-    "skill": "Distributed Systems",
+    "skill": "EfficientNet",
     "parents": [
-      "Systems"
+      "Deep Learning"
     ],
-    "score": 7
+    "score": 6
   },
   {
-    "skill": "Docker",
+    "skill": "GPGPU Programming",
+    "parents": [
+      "Systems",
+      "AI/ML"
+    ],
+    "score": 6
+  },
+  {
+    "skill": "Grafana",
+    "parents": [
+      "Data Visualization"
+    ],
+    "score": 6
+  },
+  {
+    "skill": "HTML",
+    "parents": [
+      "Frontend"
+    ],
+    "score": 6
+  },
+  {
+    "skill": "Java",
+    "parents": [
+      "Programming Fundamentals"
+    ],
+    "score": 6
+  },
+  {
+    "skill": "Kafka",
     "parents": [
       "DevOps"
     ],
-    "score": 7
+    "score": 6
   },
   {
-    "skill": "Full Stack",
+    "skill": "Langgraph",
     "parents": [
-      "Backend",
-      "Frontend"
+      "Generative AI"
     ],
-    "score": 7
+    "score": 6
   },
   {
-    "skill": "Node.js",
+    "skill": "LoRA fine-tuning",
     "parents": [
-      "Backend Frameworks"
+      "Machine Learning"
     ],
-    "score": 7
+    "score": 6
   },
   {
-    "skill": "NoSQL",
+    "skill": "Matplotlib",
     "parents": [
-      "Database",
-      "Backend"
+      "Data Visualization"
     ],
-    "score": 7
+    "score": 6
   },
   {
-    "skill": "React",
+    "skill": "Multithreading",
     "parents": [
-      "Frontend Frameworks"
+      "Operating Systems"
     ],
-    "score": 7
+    "score": 6
   },
   {
-    "skill": "SQL",
+    "skill": "NLP",
     "parents": [
-      "Database",
-      "Backend",
+      "AI/ML"
+    ],
+    "score": 6
+  },
+  {
+    "skill": "Plotly",
+    "parents": [
+      "Data Visualization"
+    ],
+    "score": 6
+  },
+  {
+    "skill": "Seaborn",
+    "parents": [
+      "Data Visualization"
+    ],
+    "score": 6
+  },
+  {
+    "skill": "Statistics",
+    "parents": [
       "Data Science"
     ],
-    "score": 7
+    "score": 6
   },
   {
-    "skill": "Cybersecurity",
+    "skill": "Streamlit",
     "parents": [
-      "Software Engineering"
+      "Frontend"
+    ],
+    "score": 6
+  },
+  {
+    "skill": "A/B Testing",
+    "parents": [
+      "Data Science",
+      "Statistics"
+    ],
+    "score": 5
+  },
+  {
+    "skill": "Airflow",
+    "parents": [
+      "Data Engineering"
+    ],
+    "score": 5
+  },
+  {
+    "skill": "BigQuery",
+    "parents": [
+      "Cloud"
+    ],
+    "score": 5
+  },
+  {
+    "skill": "C/C++",
+    "parents": [
+      "Programming Fundamentals"
+    ],
+    "score": 5
+  },
+  {
+    "skill": "Data Modeling",
+    "parents": [
+      "Data Engineering",
+      "Analytics Engineering"
+    ],
+    "score": 5
+  },
+  {
+    "skill": "Data Warehousing",
+    "parents": [
+      "Data Engineering"
+    ],
+    "score": 5
+  },
+  {
+    "skill": "dbt",
+    "parents": [
+      "Analytics Engineering"
+    ],
+    "score": 5
+  },
+  {
+    "skill": "ETL Pipelines",
+    "parents": [
+      "Data Engineering"
+    ],
+    "score": 5
+  },
+  {
+    "skill": "Excel",
+    "parents": [
+      "Data Analytics"
+    ],
+    "score": 5
+  },
+  {
+    "skill": "FAISS vector store",
+    "parents": [
+      "AI/ML"
+    ],
+    "score": 5
+  },
+  {
+    "skill": "Hypothesis Testing",
+    "parents": [
+      "Statistics",
+      "Data Science"
+    ],
+    "score": 5
+  },
+  {
+    "skill": "Power BI",
+    "parents": [
+      "Data Visualization",
+      "Business Intelligence"
+    ],
+    "score": 5
+  },
+  {
+    "skill": "Snowflake",
+    "parents": [
+      "Cloud"
+    ],
+    "score": 5
+  },
+  {
+    "skill": "Tableau",
+    "parents": [
+      "Data Visualization",
+      "Business Intelligence"
+    ],
+    "score": 5
+  },
+  {
+    "skill": "Whisper",
+    "parents": [
+      "AI/ML"
     ],
     "score": 5
   }

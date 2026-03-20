@@ -101,33 +101,17 @@ def _case_insensitive_ontology_lookup(ontology: dict[str, list[str]], skill: str
     return None
 
 
-def normalize_chat_model_name(name: str) -> str:
-    """Normalize legacy env values to currently-available Gemini model ids."""
-    raw = (name or "").strip()
-    if not raw:
-        return "models/gemini-2.0-flash"
-    if raw.startswith("models/"):
-        return raw
-
-    legacy = raw.casefold()
-    # Common legacy names that no longer exist under v1beta for this account.
-    if legacy in {"gemini-1.5-flash", "gemini-1.5-flash-latest"}:
-        return "models/gemini-flash-latest"
-    if legacy in {"gemini-1.5-pro", "gemini-1.5-pro-latest"}:
-        return "models/gemini-pro-latest"
-
-    return f"models/{raw}"
+OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+# Keep in sync with scripts/extract_resume_skills.py
+OPENROUTER_CHAT_MODEL = "nvidia/nemotron-3-nano-30b-a3b"
+OPENROUTER_EMBED_MODEL = "nvidia/llama-nemotron-embed-vl-1b-v2:free"
 
 
 def llm_extract_job_posting(
     posting_text: str,
     ontology: dict[str, list[str]],
-    model_name: str,
+    client: Any,
 ) -> dict[str, Any]:
-    from langchain_core.messages import HumanMessage, SystemMessage
-    from langchain_google_genai import ChatGoogleGenerativeAI
-
-    llm = ChatGoogleGenerativeAI(model=model_name, temperature=0.2)
     ontology_json = json.dumps(ontology, ensure_ascii=False)
 
     system = (
@@ -145,28 +129,58 @@ def llm_extract_job_posting(
     last_err: Exception | None = None
     for attempt in range(3):
         try:
-            msg = llm.invoke([SystemMessage(content=system), HumanMessage(content=human)])
-            content = getattr(msg, "content", None)
-            return extract_json_object(str(content if content is not None else msg))
+            print(f"  - LLM extract (attempt {attempt + 1}/3)...", flush=True)
+            response = client.chat.completions.create(
+                model=OPENROUTER_CHAT_MODEL,
+                messages=[
+                    {"role": "system", "content": "Return ONLY valid JSON. All keys and strings MUST use double quotes. No text outside JSON."},
+                    {"role": "user", "content": f"{system}\n\n{human}"},
+                ],
+                temperature=0.0,
+                max_tokens=1800,
+            )
+            raw = strip_code_fences(response.choices[0].message.content or "")
+            print("\n===== LLM RAW OUTPUT START =====")
+            print(raw)
+            print("===== LLM RAW OUTPUT END =====\n")
+            if not raw.strip():
+                raise ValueError("LLM returned empty response")
+            return extract_json_object(raw)
         except Exception as e:  # pragma: no cover
             last_err = e
-            human = (
-                "IMPORTANT: Output must be ONLY valid JSON. No markdown, no extra text.\n\n" + human
-            )
+            human = "IMPORTANT: Output must be ONLY valid JSON. No markdown, no extra text.\n\n" + human
             time.sleep(0.75 * (attempt + 1))
     assert last_err is not None
     raise last_err
 
 
-def embed_text(text: str, embedding_model: str) -> list[float]:
-    from langchain_google_genai import GoogleGenerativeAIEmbeddings
+def embed_text(openrouter_api_key: str, text: str) -> list[float]:
+    import requests
 
-    emb = GoogleGenerativeAIEmbeddings(model=embedding_model)
     last_err: Exception | None = None
     for attempt in range(3):
         try:
-            v = emb.embed_query(text)
-            return [float(x) for x in v]
+            print(f"  - Role embedding (attempt {attempt + 1}/3)...", flush=True)
+            r = requests.post(
+                f"{OPENROUTER_BASE_URL}/embeddings",
+                headers={
+                    "Authorization": f"Bearer {openrouter_api_key}",
+                    "Content-Type": "application/json",
+                },
+                json={"model": OPENROUTER_EMBED_MODEL, "input": text},
+                timeout=60,
+            )
+            if r.status_code >= 400:
+                raise RuntimeError(f"OpenRouter embeddings error {r.status_code}: {r.text}")
+
+            data = r.json()
+            items = data.get("data")
+            if not isinstance(items, list) or not items:
+                raise RuntimeError(f"Unexpected embeddings response: {data}")
+            emb = items[0].get("embedding")
+            if not isinstance(emb, list) or not emb:
+                raise RuntimeError(f"Missing embedding in response: {data}")
+            return [float(x) for x in emb]
         except Exception as e:  # pragma: no cover
             last_err = e
             time.sleep(0.75 * (attempt + 1))
@@ -232,30 +246,37 @@ def main() -> int:
     args = parser.parse_args()
 
     load_dotenv()
-    google_key = os.getenv("GOOGLE_API_KEY", "").strip()
-    if not google_key:
-        raise RuntimeError("Missing GOOGLE_API_KEY in .env")
+    openrouter_key = os.getenv("OPENROUTER_API_KEY", "").strip()
+    if not openrouter_key:
+        raise RuntimeError("Missing OPENROUTER_API_KEY in .env")
 
-    model_name = normalize_chat_model_name(os.getenv("GEMINI_MODEL", "models/gemini-2.0-flash"))
-    embedding_model = os.getenv("GEMINI_EMBEDDING_MODEL", "models/text-embedding-004")
+    from openai import OpenAI
+
+    client = OpenAI(
+        api_key=openrouter_key,
+        base_url=OPENROUTER_BASE_URL,
+        timeout=120,
+    )
 
     in_dir = Path(args.in_dir)
     ontology = load_ontology(Path(args.ontology))
 
+    posting_paths = sorted([p for p in in_dir.iterdir() if p.is_file()])
     items: list[dict[str, Any]] = []
-    for path in sorted([p for p in in_dir.iterdir() if p.is_file()]):
+    for idx, path in enumerate(posting_paths, start=1):
         job_id = path.name
+        print(f"[{idx}/{len(posting_paths)}] Processing {job_id}...")
         posting_text = _normalize_whitespace(read_posting_text(path))
 
-        extracted = llm_extract_job_posting(posting_text, ontology, model_name=model_name)
-        time.sleep(3)
+        extracted = llm_extract_job_posting(posting_text, ontology, client=client)
         company_name = str(extracted.get("company_name", "")).strip()
         role = str(extracted.get("role", "")).strip()
         location = str(extracted.get("location", "")).strip()
         employment_type = str(extracted.get("employment_type", "")).strip()
         skills = _coerce_skills(extracted.get("skills", []), ontology)
 
-        role_embedding = embed_text(role or job_id, embedding_model=embedding_model)
+        role_embedding = embed_text(openrouter_key, role or job_id)
+        print(f"  - Done {job_id}", flush=True)
 
         items.append(
             {
@@ -266,7 +287,7 @@ def main() -> int:
                 "employment_type": employment_type,
                 "skills": skills,
                 "role_embedding": role_embedding,
-                "embedding_model": embedding_model,
+                "embedding_model": OPENROUTER_EMBED_MODEL,
                 "source_path": str(path.as_posix()),
             }
         )

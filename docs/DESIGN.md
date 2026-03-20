@@ -37,21 +37,20 @@ Produce:
 
 ## 3) Repository layout
 
-### Inputs (`data/`)
+### Data (`data/`)
 - `data/skill_ontology.json`
+  - This is a skill to parent skill mapping dataset. For example, {"skill":"Deep Learning", "parents":["AI/ML"]}
   - JSON object: `{ "Skill Name": { "parents": ["Parent1", ...] }, ... }`
   - Used in multiple stages:
     - Resume extraction (LLM prompt grounding + heuristic matching)
     - Job posting skill extraction (heuristic and/or LLM)
     - Skill aggregation and gap computation (parent normalization / taxonomy consistency)
 
-- `data/candidate_resume/`
-  - currently contains `Sanjana_Boggaram_Resume.pdf`
-
 - `data/job_postings/`
   - synthetic job postings as **plaintext files without extensions** (e.g., `ABC`, `react`, `IT`)
 
 - `data/study_resources/resources`
+  - A list of study resources, groupeed into categories.
   - JSON object mapping category/skill → list of resources
   - each resource is like:
     ```json
@@ -65,8 +64,15 @@ Produce:
       "description": "..."
     }
     ```
+### Inputs
+- User resume
+  - `data/candidate_resume/`
+    - currently contains `Sanjana_Boggaram_Resume.pdf`
+- User job filters (filters out the job postings as per user preference)
+  Location and job role
 
-### Outputs (`outputs/`)
+### Output Logs (`outputs/`)
+These are for reference only, for logging purposes, to see the various steps taken.
 - `outputs/resume_skills.json`
 - `outputs/job_postings/*.json`
 - `outputs/job_postings_index.json`
@@ -75,6 +81,7 @@ Produce:
 - `outputs/gap_skills.json`
 - `outputs/gap_summary.md`
 - `outputs/gap_selected_resources.json`
+### Final Output:
 - `outputs/learning_plan.md`
 
 
@@ -96,7 +103,9 @@ Notes:
 - `parents` is a list of skill/category names; we prefer ontology parents where possible.
 
 ### 4.2 Job posting JSON (per job)
-
+Generated after running:
+- `python scripts/process_job_postings.py extract`
+- `python scripts/embed_job_postings_and_rebuild_index.py`
 Stored at `outputs/job_postings/<job_id>.json`:
 ```json
 {
@@ -113,7 +122,9 @@ Stored at `outputs/job_postings/<job_id>.json`:
 ```
 
 ### 4.3 Job postings index
-
+Generated after running:
+- `python scripts/process_job_postings.py extract`
+- `python scripts/embed_job_postings_and_rebuild_index.py`
 `outputs/job_postings_index.json`:
 ```json
 {
@@ -128,7 +139,7 @@ The index is built from the per-job JSONs after embeddings are added.
 
 ### Step A — Resume skill extraction
 Script: `scripts/extract_resume_skills.py`
-
+The user uploads a pdf of their resume
 1. Extract text from PDF with `pypdf`.
 2. Skill extraction:
    - **Primary path (AI):** OpenRouter chat model produces JSON array of skills.
@@ -200,7 +211,7 @@ This is the core “AI fallback logic”: always prefer valid JSON, tolerate com
 Script: `scripts/process_job_postings.py extract`
 
 - Reads each plaintext file in `data/job_postings/`.
-- Extracts job metadata (role/company/location/type) and skills.
+- Extracts job metadata (role/company/location/type) and skills using an agent and a fallback method in the absence of llm (similar to the resume skill extraction).
 - Writes per-job JSON files into `outputs/job_postings/`.
 
 (These JSONs are later augmented with embeddings.)
@@ -226,12 +237,13 @@ Script: `scripts/filter_jobs_and_average.py`
    - if `none`: no location filter
    - else uses “%like%” behavior: tokens must appear in location string (case-insensitive)
 
-2. Prompt user for role query:
+2. Prompt user for role query and filter:
    - embed the query
    - cosine similarity against each job’s `role_embedding`
    - keep top jobs
 
 3. Average skills over the filtered set:
+There might be many job postings matching the users filters. We need to get a complete picture of what kinds skills required for the role. we average out the skills (this makes sure that skills repeated in multiple job postings get more priority than the ones which are'nt repeated much.
 - per skill: average the score across postings where it appears
 - output: `outputs/average_job_skills.json`
 
@@ -259,11 +271,11 @@ Inputs:
 
 Flow:
 1. Filter to **positive** gaps (score > 0): skills the user should focus on.
-2. **LLM 1:** summarize/prioritize gaps → `outputs/gap_summary.md`
+2. **agent 1:** summarize/prioritize gaps → `outputs/gap_summary.md`
 3. For each gap skill, collect candidate resources from:
    - resources keyed by the skill name (if exists)
    - resources keyed by each parent category
-4. **LLM 2:** select relevant resources for that gap skill.
+4. **agent 2:** select relevant resources for that gap skill.
    - The prompt uses **resource IDs** (`r0`, `r1`, ...) so the model can only select from provided items.
    - Output is strict JSON: `{ "selected_ids": [...] }`
    - Materialize chosen items → `outputs/gap_selected_resources.json`
@@ -286,8 +298,14 @@ Optional overrides:
 - `outputs/job_postings_index.json` can become large because it embeds the full skill lists + vectors per job.
   - If this grows, the next step would be a lightweight vector DB (FAISS/Chroma) + keeping JSON as source-of-truth.
 
+## 8) Future Enhancements:
 
-## 8) Main scripts (cheat sheet)
+- Synthetic small datasets are used for job postings and study resourses. These can be improved, or a feature can be added to pull job postings and resourses from the internet through an web agent.
+- Right now the only job filters added are job location and role. More filters can be added, example: company, salary range, full-time/internship, etc.
+- When the job postings and resourses data becomes big, the next step would be a lightweight vector DB (FAISS/Chroma) for proper storage, filtering and retrieval.
+- The llm used is a free api. Better paid models would provide way better results if used.
+  
+## 9) Main scripts (cheat sheet)
 
 - Resume skills: `scripts/extract_resume_skills.py`
 - Job extraction: `scripts/process_job_postings.py extract`
@@ -295,3 +313,5 @@ Optional overrides:
 - Filter + average: `scripts/filter_jobs_and_average.py`
 - Gap skills: `scripts/generate_gap_skills.py`
 - Plan/report: `scripts/report_generate.py`
+
+  or run `run.sh` (it'll run the necessary scripts in order)

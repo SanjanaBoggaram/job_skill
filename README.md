@@ -42,4 +42,4 @@ If you want to run each script seperately then follow:
    - `python scripts/report_generate.py`
 
 ### Architecture Diagram:
-!(docs/images/skill.jpg)
+![Architecture](docs/images/skill.jpg)

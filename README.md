@@ -40,3 +40,6 @@ If you want to run each script seperately then follow:
 
 6. Generate gap summary + filtered resources + learning plan:
    - `python scripts/report_generate.py`
+
+### Architecture Diagram:
+!(docs/images/skill.jpg)

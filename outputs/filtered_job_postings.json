@@ -8,7 +8,7 @@
       "employment_type": "Full-time",
       "skills": [
         {
-          "skill": "Data Analytics",
+          "skill": "Data Analysis",
           "parents": [
             "Data Science"
           ],
@@ -2084,7 +2084,7 @@
       ],
       "embedding_model": "nvidia/llama-nemotron-embed-vl-1b-v2:free",
       "json_path": "outputs/job_postings/uni.json",
-      "role_similarity": 0.3043218534702373
+      "role_similarity": 0.367439997439339
     },
     {
       "job_id": "vir",
@@ -2094,7 +2094,7 @@
       "employment_type": "Full-time",
       "skills": [
         {
-          "skill": "Data Analytics",
+          "skill": "Data Analysis",
           "parents": [
             "Data Science"
           ],
@@ -4170,7 +4170,7 @@
       ],
       "embedding_model": "nvidia/llama-nemotron-embed-vl-1b-v2:free",
       "json_path": "outputs/job_postings/vir.json",
-      "role_similarity": 0.3043218534702373
+      "role_similarity": 0.367439997439339
     },
     {
       "job_id": "uni",
@@ -6255,7 +6255,7 @@
         -0.00855255126953125
       ],
       "embedding_model": "nvidia/llama-nemotron-embed-vl-1b-v2:free",
-      "role_similarity": 0.3043218534702373
+      "role_similarity": 0.367439997439339
     },
     {
       "job_id": "vir",
@@ -8340,7 +8340,7 @@
         -0.00855255126953125
       ],
       "embedding_model": "nvidia/llama-nemotron-embed-vl-1b-v2:free",
-      "role_similarity": 0.3043218534702373
+      "role_similarity": 0.367439997439339
     },
     {
       "job_id": "nex",
@@ -10548,7 +10548,7 @@
       ],
       "embedding_model": "nvidia/llama-nemotron-embed-vl-1b-v2:free",
       "json_path": "outputs/job_postings/nex.json",
-      "role_similarity": 0.17423555965638637
+      "role_similarity": 0.2940864986180698
     }
   ]
 }

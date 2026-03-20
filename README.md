@@ -18,6 +18,10 @@ Create/update `.env`:
 - `OPENROUTER_API_KEY=...`
 
 ### 3) Run the pipeline
+Run:
+- `python run.sh` 
+to run the entire pipeline. This will run all the scripts in order.
+If you want to run each script seperately then follow:
 
 1. Extract resume skills:
    - `python scripts/extract_resume_skills.py --use-llm`

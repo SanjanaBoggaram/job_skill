@@ -142,7 +142,13 @@ def average_job_skills(
     postings: list[dict[str, Any]],
     ontology: dict[str, list[str]],
 ) -> list[dict[str, Any]]:
-    score_acc: dict[str, list[int]] = defaultdict(list)
+    if not postings:
+        return []
+
+    postings_count = len(postings)
+
+    score_sum: dict[str, int] = defaultdict(int)
+    present_count: dict[str, int] = defaultdict(int)
     parents_counter: dict[str, Counter[str]] = defaultdict(Counter)
     casing_counter: dict[str, Counter[str]] = defaultdict(Counter)
 
@@ -150,6 +156,10 @@ def average_job_skills(
         skills = post.get("skills", [])
         if not isinstance(skills, list):
             continue
+
+        # Dedupe within a posting: treat each skill at most once per job.
+        # If duplicates exist, keep the max score.
+        per_post: dict[str, dict[str, Any]] = {}
         for s in skills:
             if not isinstance(s, dict):
                 continue
@@ -157,21 +167,31 @@ def average_job_skills(
             if not name:
                 continue
             key = name.casefold()
-            casing_counter[key][name] += 1
 
             try:
                 score = int(s.get("score", 0))
             except Exception:
                 score = 0
             score = max(0, min(10, score))
-            score_acc[key].append(score)
+
+            prev = per_post.get(key)
+            if prev is None or score > int(prev.get("score", 0)):
+                per_post[key] = {"name": name, "score": score, "parents": s.get("parents", [])}
+
+        for key, rec in per_post.items():
+            name = str(rec.get("name", "")).strip()
+            casing_counter[key][name] += 1
+
+            score = int(rec.get("score", 0))
+            score_sum[key] += score
+            present_count[key] += 1
 
             onto = ontology_parents(ontology, name)
             if onto is not None:
                 for p in onto:
                     parents_counter[key][p] += 1
             else:
-                parents_val = s.get("parents", [])
+                parents_val = rec.get("parents", [])
                 if isinstance(parents_val, str):
                     parents_counter[key][parents_val] += 1
                 elif isinstance(parents_val, list):
@@ -181,10 +201,12 @@ def average_job_skills(
                             parents_counter[key][p] += 1
 
     out: list[dict[str, Any]] = []
-    for key, scores in score_acc.items():
-        if not scores:
+    for key, total in score_sum.items():
+        # Missing in a posting implies score 0, so divide by total postings.
+        # present_count is tracked mainly for debugging/analysis if needed.
+        if present_count.get(key, 0) <= 0:
             continue
-        avg = sum(scores) / len(scores)
+        avg = total / postings_count
         avg_score = int(round(avg))
         display = casing_counter[key].most_common(1)[0][0]
         parents = [p for p, _ in parents_counter[key].most_common()]

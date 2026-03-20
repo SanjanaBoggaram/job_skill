@@ -3,7 +3,9 @@
 Pipeline to extract skills from a resume + job postings, compute a job-skill average after filtering, calculate skill gaps, and generate a resource-backed learning plan.
 
 - Design/architecture: [docs/DESIGN.md](docs/DESIGN.md)
+- Demo video link: https://youtu.be/_86U5_bmIKc
 - Main scripts live in `scripts/`
+- A run.sh is also provided.
 
 ## Quick start
 
